@@ -1,12 +1,15 @@
 package POJO;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class User {
 
     private String name;
     private String email;
     private String blockers;
     private User buyingFor;
-
 
     public User(String n, String e) {
         this.name = n;
