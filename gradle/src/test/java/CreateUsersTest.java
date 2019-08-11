@@ -24,4 +24,10 @@ public class CreateUsersTest {
         assertTrue(CreateUsers.userList.contains(expectedUserWithBlocker));
     }
 
+    @Test
+    public void shouldExitIfNegIsEntered(){
+        // need to figure out how to test theoretical user input
+        // or need a method
+    }
+
 }
