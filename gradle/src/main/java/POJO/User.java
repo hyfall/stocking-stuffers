@@ -21,4 +21,22 @@ public class User {
         this.email = e;
         this.blockers = b;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof User) {
+            if(((User) obj).getName().equals(this.getName()) &&
+                    ((User) obj).getEmail().equals(this.getEmail()) &&
+                    ((User) obj).getBlockers() == this.getBlockers() &&
+                    ((User) obj).getBuyingFor() == this.getBuyingFor()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getName().hashCode();
+    }
 }
