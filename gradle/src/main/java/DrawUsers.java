@@ -20,5 +20,9 @@ public class DrawUsers {
 
     }
 
+    public boolean notSelf(User u1, User u2) {
+        return true;
+    }
+
 
 }
