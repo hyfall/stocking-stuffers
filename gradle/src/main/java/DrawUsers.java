@@ -21,6 +21,9 @@ public class DrawUsers {
     }
 
     public boolean notSelf(User u1, User u2) {
+        if (u1.equals(u1)) {
+            return false;
+        }
         return true;
     }
 

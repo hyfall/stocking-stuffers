@@ -14,5 +14,9 @@ public class DrawUsersTest {
         assertFalse(drawUsers.notSelf(userOne, userOne));
     }
 
+    @Test
+    public void differentUserShouldReturnTrue(){
+        assertFalse(drawUsers.notSelf(userOne, userTwo));
+    }
 
 }
