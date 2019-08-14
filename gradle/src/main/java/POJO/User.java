@@ -8,15 +8,10 @@ public class User {
 
     private String name;
     private String email;
-    private String blockers;
+    private String[] blockers;
     private User buyingFor;
 
-    public User(String n, String e) {
-        this.name = n;
-        this.email = e;
-    }
-
-    public User(String n, String e, String b){
+    public User(String n, String e, String[] b){
         this.name = n;
         this.email = e;
         this.blockers = b;
@@ -27,12 +22,25 @@ public class User {
         if (obj != null && obj instanceof User) {
             if(((User) obj).getName().equals(this.getName()) &&
                     ((User) obj).getEmail().equals(this.getEmail()) &&
-                    ((User) obj).getBlockers() == this.getBlockers() &&
+                    compareBlockers(((User) obj).getBlockers(), this.getBlockers()) &&
                     ((User) obj).getBuyingFor() == this.getBuyingFor()) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static boolean compareBlockers(String[] user1, String[] user2) {
+        if (user1.length != user2.length) {
+                return false;
+        } else {
+            for (int i=0; i<user1.length; i++) {
+                if (!(user1[i].equals(user2[i]))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override

@@ -29,12 +29,14 @@ public class CreateUsers {
     }
 
     public static void newUser(String n, String e, String b) {
-        if (b.compareToIgnoreCase("none") == 0) {
-            User addUser = new User(n, e);
-            userList.add(addUser);
-        } else {
-            User addUser = new User (n, e, b);
-            userList.add(addUser);
-        }
+        String[] blockers = parseBlockers(b);
+        User addUser = new User (n, e, blockers);
+        userList.add(addUser);
     }
+
+    public static String[] parseBlockers(String list) {
+        String[] blockers = list.split(", ");
+        return blockers;
+    }
+
 }

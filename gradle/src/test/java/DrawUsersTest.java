@@ -6,8 +6,9 @@ import static org.junit.Assert.*;
 public class DrawUsersTest {
 
     private DrawUsers drawUsers = new DrawUsers();
-    User userOne = new User ("Christy", "email@example.com");
-    User userTwo = new User ("Ashley", "ashley@example.com");
+    String[] expectedEmptyBlockers = new String[]{"none"};
+    User userOne = new User ("Christy", "email@example.com", expectedEmptyBlockers);
+    User userTwo = new User ("Ashley", "ashley@example.com", expectedEmptyBlockers);
 
     @Test
     public void sameUserShouldReturnFalse(){
