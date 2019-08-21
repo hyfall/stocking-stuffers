@@ -1,9 +1,10 @@
 package POJO;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter @Setter @EqualsAndHashCode
 public class User {
 
     private String name;
@@ -17,7 +18,7 @@ public class User {
         this.blockers = b;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof User) {
             if(((User) obj).getName().equals(this.getName()) &&
@@ -46,5 +47,5 @@ public class User {
     @Override
     public int hashCode() {
         return this.getName().hashCode();
-    }
+    }*/
 }
