@@ -22,7 +22,7 @@ public class DrawUsersTest {
 
     @Test
     public void differentUserShouldReturnTrue(){
-        assertFalse(drawUsers.notSelf(userOne, userTwo));
+        assertTrue(drawUsers.notSelf(userOne, userTwo));
     }
 
     @Test

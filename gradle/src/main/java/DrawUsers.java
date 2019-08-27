@@ -16,7 +16,7 @@ public class DrawUsers {
 
         for (int i = 0; i<shuffledUsers.size(); i++) {
             boolean self = notSelf(CreateUsers.userList.get(i),shuffledUsers.get(i));
-            if (!self) {
+            if (self) {
                 CreateUsers.userList.get(i).setBuyingFor(shuffledUsers.get(i));
             } else {
                 if (i == shuffledUsers.size()-1) {
@@ -32,7 +32,7 @@ public class DrawUsers {
     }
 
     public static boolean notSelf(User u1, User u2) {
-        if (u1.equals(u1)) {
+        if (u1.equals(u2)) {
             return false;
         }
         return true;
