@@ -38,5 +38,15 @@ public class DrawUsers {
         return true;
     }
 
+    public static boolean notBlocker(User u1, User u2) {
+        // u1 is user, u2 we are checking if in blockers
+        String[] blockers = u1.getBlockers();
+        for (int i=0; i<blockers.length; i++) {
+            if (blockers[i].equals(u2.getName())){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
