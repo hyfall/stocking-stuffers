@@ -12,7 +12,7 @@ public class DrawUsersTest {
     private DrawUsers drawUsers = new DrawUsers();
     String[] expectedEmptyBlockers = new String[]{"none"};
     String[] nonEmptyBlocker = new String[]{"Christy"};
-    String[] multipleBlockers = new String[]{"Christy", "Emily", "Rachel"};
+    String[] multipleBlockers = new String[]{"Christy", "Ashley", "Rachel"};
     User userOne = new User ("Christy", "email@example.com", expectedEmptyBlockers);
     User userTwo = new User ("Ashley", "ashley@example.com", expectedEmptyBlockers);
     User userThree = new User ("Emily", "emily@example.com", expectedEmptyBlockers);
@@ -20,39 +20,44 @@ public class DrawUsersTest {
     User userFive = new User ("Alex", "alex@example.com", multipleBlockers);
 
     @Test
-    public void sameUserShouldReturnFalse(){
-        assertFalse(drawUsers.notSelf(userOne, userOne));
-    }
-
-    @Test
-    public void differentUserShouldReturnTrue(){
-        assertTrue(drawUsers.notSelf(userOne, userTwo));
-    }
-
-    @Test
     public void secondListShouldBeSmaller() {
         // Just for use debugging
         CreateUsers.userList.add(userOne);
         CreateUsers.userList.add(userTwo);
         CreateUsers.userList.add(userThree);
+        CreateUsers.userList.add(userFour);
+        CreateUsers.userList.add(userFive);
 
-        ArrayList<User> finalUsers = drawUsers.shuffleList();
+        ArrayList<User> finalUsers = drawUsers.pickPeople();
+        for (int i = 0; i<finalUsers.size(); i++) {
+            User user = finalUsers.get(i);
+            System.out.println(user.getName() + " is buying for " + user.getBuyingFor().getName());
+        }
 
-        /*assertThat(finalUsers.get(0).getBuyingFor(), is(not(userThree)));
-        assertThat(finalUsers.get(1).getBuyingFor(), is(not(userOne)));
-        assertThat(finalUsers.get(2).getBuyingFor(), is(not(userTwo)));*/
     }
 
     @Test
-    public void noNameInBlockerShouldReturnTrue(){
+    public void nameInBlockerShouldReturnTrue(){
         assertTrue(drawUsers.notBlocker(userOne, userTwo));
-        assertTrue(drawUsers.notBlocker(userFive, userTwo));
+        assertTrue(drawUsers.notBlocker(userFive, userThree));
     }
 
     @Test
     public void nameInBlockerShouldReturnFalse(){
         assertFalse(drawUsers.notBlocker(userFour, userOne));
         assertFalse(drawUsers.notBlocker(userFive, userFour));
+    }
+
+    @Test
+    public void alexShouldBeFirst() {
+        CreateUsers.userList.add(userOne);
+        CreateUsers.userList.add(userTwo);
+        CreateUsers.userList.add(userThree);
+        CreateUsers.userList.add(userFour);
+        CreateUsers.userList.add(userFive);
+
+        ArrayList<User> finalUsers = drawUsers.blockersAtFront(CreateUsers.userList);
+        assertThat(finalUsers.get(0), is(userFive));
     }
 
 }

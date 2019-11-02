@@ -11,11 +11,13 @@ public class User {
     private String email;
     private String[] blockers;
     private User buyingFor;
+    private boolean isPicked;
 
     public User(String n, String e, String[] b){
         this.name = n;
         this.email = e;
         this.blockers = b;
+        this.isPicked = false;
     }
 
     /*@Override
