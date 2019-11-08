@@ -15,7 +15,7 @@ public class CreateUsers {
             String name = keyboard.nextLine();
             System.out.println("What's your email");
             String email = keyboard.nextLine();
-            System.out.println("Anyone you can't buy for? Please separate by commas");
+            System.out.println("Anyone you can't buy for? Please separate by commas, or enter none");
             String blockers = keyboard.nextLine();
             newUser(name, email, blockers);
             System.out.println("Another one? Enter 0 to continue and -1 to quit");
